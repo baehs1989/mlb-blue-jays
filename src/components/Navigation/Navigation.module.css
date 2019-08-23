@@ -1,0 +1,149 @@
+.Header{
+  width: 100%;
+  position: relative;
+  background-color:#f7f7f7;
+  overflow:hidden;
+}
+
+.Menu{
+  display:none;
+}
+
+.Nav{
+  width: 100%;
+  height: 5rem;
+  font-family: "Roboto Condensed", sans-sans-serif;
+  font-size: 1.5rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  line-height: 5rem;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.2);
+  background-color: #fff;
+}
+
+.Nav ul{
+  height:5rem;
+  list-style: none;
+  float:right;
+}
+
+.Nav ul li{
+  display: inline-block;
+  height:5rem;
+  padding: 0 1.5rem;
+  transition: opacity 0.3s;
+}
+
+.Nav ul li a{
+  text-decoration: none;
+  color: #333;
+}
+
+.Nav:hover ul li:not(:hover){
+  opacity: 0.5;
+}
+
+.NavContainer{
+  width: 80%;
+  max-width: 96rem;
+  background-color: red;
+  margin: 0 auto
+}
+
+.Logo {
+  float: left;
+  margin-top : 0rem;
+}
+
+.Logo img{
+  width: auto;
+  height: 5rem;
+}
+
+@media screen and (max-width: 790px){
+  .Logo {
+    display: none;
+  }
+
+  .Menu{
+    display:block;
+    position:fixed;
+    width: 3rem;
+    height: 3rem;
+    top: 2rem;
+    right: 2rem;
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  .Bar,
+  .Bar::before,
+  .Bar::after{
+    position:absolute;
+    background-color: #000;
+    margin:auto;
+    width:100%;
+    height:3px;
+    content: "";
+    top: 50%;
+    left:0;
+  }
+
+  .Bar{
+    margin-top: -2px;
+  }
+
+  .Bar::before{
+    top: -1.2rem;
+  }
+
+  .Bar::after{
+    top: 1.2rem;
+  }
+
+  .Bar:before,
+  .Bar::after{
+    transform: rotate(0deg)
+  }
+
+  .Active .Bar{
+    background-color: transparent;
+  }
+
+  .Active .Bar::before{
+    transform: rotate(45deg);
+  }
+
+  .Active .Bar::after{
+    transform: rotate(-45deg);
+  }
+
+  .Active .Bar::before,
+  .Active .Bar::after{
+    top: 0
+  }
+
+  .Nav{
+    max-width: 190px;
+    width: 50vw;
+    height: 100vh;
+    background-color: #fff;
+    position: fixed;
+    transform: translateX(-50rem);
+    z-index: 998;
+    line-height: 1;
+    font-size: 1.5rem;
+  }
+
+  .MenuOpen .Nav{
+    transform: translateX(0);
+  }
+
+  .Nav ul li {
+    display: block;
+    padding: 3rem 1rem;
+  }
+
+
+
+}
