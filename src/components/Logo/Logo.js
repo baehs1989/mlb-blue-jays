@@ -1,10 +1,13 @@
 import React from 'react';
-import mlblogo from '../../assets/images/logo.png'
-import styles from './Logo.module.css'
+import mlblogo from '../../assets/images/logo.png';
+import {NavLink} from 'react-router-dom';
 
 const logo = (props) => (
-    <div className={styles.Logo}>
-      <img src={mlblogo} alt="Logo"/>
+    <div>
+      <NavLink to="/">
+        <img src={mlblogo} alt="Logo"/>
+      </NavLink>
+
     </div>
 );
 

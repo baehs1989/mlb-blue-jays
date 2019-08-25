@@ -1,0 +1,23 @@
+.TeamDetails img{
+  max-width: 120px;
+}
+
+.Buttons{
+  font-size: 0.8rem;
+}
+
+
+.Buttons div{
+  box-sizing: border-box;
+  border-bottom: 1px solid #bfbfbf;
+  margin-bottom: 1rem;
+  padding:1rem;
+  cursor: pointer;
+  color: #bfbfbf;
+}
+
+.Clicked{
+  border-bottom: 2px solid black !important;
+  font-weight: bold;
+  color: black !important;
+}

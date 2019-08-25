@@ -1,0 +1,10 @@
+.Image{
+  margin-right: 0.5rem;
+  height: 80px;
+}
+
+.Table th,
+.Table td
+{
+  vertical-align: middle !important;
+}

@@ -2,42 +2,21 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Layout from './hoc/Layout/Layout';
+import Team from './containers/Team/Team'
+import TeamDetails from './containers/TeamDetails/TeamDetails'
+import PlayerDetails from './containers/PlayerDetails/PlayerDetails'
+import {Route, Switch} from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
       <Layout>
-        <div className="container">
-
-          <div className="row justify-content-center">
-            <div className="league col-6">Amaerican League</div>
-            <div className="league col-6">National League</div>
-          </div>
-
-
-          <div className="division">
-            <span>NL East</span>
-          </div>
-
-          <div className="row justify-content-center">
-            <div className="team_logo col-6 col-sm-2">
-              <img src="https://www.mlbstatic.com/team-logos/141.svg" width="100%" alt="Logo"/>
-            </div>
-            <div className="team_logo col-6 col-sm-2">
-              <img src="https://www.mlbstatic.com/team-logos/141.svg" width="100%" alt="Logo"/>
-            </div>
-            <div className="team_logo col-6 col-sm-2">
-              <img src="https://www.mlbstatic.com/team-logos/141.svg" width="100%" alt="Logo"/>
-            </div>
-            <div className="team_logo col-6 col-sm-2">
-              <img src="https://www.mlbstatic.com/team-logos/141.svg" width="100%" alt="Logo"/>
-            </div>
-            <div className="team_logo col-6 col-sm-2">
-              <img src="https://www.mlbstatic.com/team-logos/141.svg" width="100%" alt="Logo"/>
-            </div>
-          </div>
-        </div>
+        <Switch>
+          <Route path="/team/:id([a-zA-Z]+)" exact component={TeamDetails}/>
+          <Route path="/player/:id([0-9]+)" exact component={PlayerDetails}/>
+          <Route path="/" component={Team}/>
+        </Switch>
       </Layout>
     </div>
   );

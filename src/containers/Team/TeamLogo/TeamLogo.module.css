@@ -1,0 +1,36 @@
+.TeamLogo{
+  box-sizing: border-box;
+}
+
+.TeamLogo:hover {
+  border: 1px solid #a6a6a6;
+}
+
+.TeamLogo img {
+  height:75%;
+  width:75%;
+  box-sizing: border-box;
+}
+
+.TeamName{
+  display:block;
+}
+
+.TeamAbb{
+  display:none;
+}
+
+.TeamName,
+.TeamAbb{
+  margin-top:0.2rem;
+}
+
+@media screen and (max-width: 575px){
+  .TeamName{
+    display:none;
+  }
+
+  .TeamAbb{
+    display:block;
+  }
+}

@@ -1,0 +1,17 @@
+.BIO{
+  box-sizing: border-box;
+  padding: 0.5rem;
+  align-items: center;
+}
+
+.BIO img{
+  width:70%
+}
+
+.BIO span{
+  font-weight: bold;
+}
+
+.BIO table{
+  font-size:0.8rem;
+}
