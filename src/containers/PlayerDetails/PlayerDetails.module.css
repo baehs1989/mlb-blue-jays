@@ -1,17 +1,81 @@
 .BIO{
   box-sizing: border-box;
-  padding: 0.5rem;
+  padding: 1rem;
   align-items: center;
 }
 
 .BIO img{
-  width:70%
+  height:100%
 }
 
 .BIO span{
   font-weight: bold;
+  font-size:1.1rem;
 }
 
 .BIO table{
+  font-size:0.9rem;
+}
+
+.BIO #current_stat{
   font-size:0.8rem;
+}
+
+.STAT table{
+  line-height:normal;
+}
+
+.STAT .Wrapper {
+  position: relative;
+}
+
+.STAT .Scroller {
+  margin-left: 80px;
+  overflow-x: scroll;
+  overflow-y: visible;
+  width: 80vw;
+}
+
+.STAT th, .STAT td {
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+
+.STAT .Pinned {
+  position: absolute;
+  left: 0.5rem;
+  margin-left:10px;
+  width: 70px;
+  box-sizing: border-box;
+}
+
+.STAT th.Pinned{
+
+}
+
+.STAT tr:nth-child(odd) {
+  /* background-color: #ccc; */
+}
+
+.STAT thead th{
+  border-bottom: 0;
+}
+
+.Buttons{
+  font-size: 0.9rem;
+}
+
+.Buttons div{
+  box-sizing: border-box;
+  border-bottom: 1px solid #bfbfbf;
+  margin-bottom: 1rem;
+  padding:1rem;
+  cursor: pointer;
+  color: #bfbfbf;
+}
+
+.Clicked{
+  border-bottom: 2px solid black !important;
+  font-weight: bold;
+  color: black !important;
 }

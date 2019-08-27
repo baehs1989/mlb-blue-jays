@@ -9,8 +9,8 @@ class Layout extends Component {
             <Navigation/>
             <div className={styles.Main + " container-fluid"}>
               <div className="row justify-content-center">
-                <main role="main" className="col-12 col-md-8">
-                  <div className="">
+                <main role="main" className="col-12 col-md-9">
+                  <div className="row justify-content-center">
                     {this.props.children}
                   </div>
                 </main>

@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Layout>
         <Switch>
-          <Route path="/team/:id([a-zA-Z]+)" exact component={TeamDetails}/>
+          <Route path="/team/:id([0-9]+)" exact component={TeamDetails}/>
           <Route path="/player/:id([0-9]+)" exact component={PlayerDetails}/>
           <Route path="/" component={Team}/>
         </Switch>

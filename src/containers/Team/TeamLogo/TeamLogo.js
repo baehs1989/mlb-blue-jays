@@ -11,14 +11,18 @@ class TeamLogo extends Component {
     return (
           <div className={styles.TeamLogo + " col-5 col-sm-2"}>
             <NavLink
-              to={"team/" + this.props.abb}>
-                <img src={imgsrc} height="80%" width="80%" alt="Logo"/>
-                <div className={styles.TeamName}>
+              to={"team/" + this.props.id}>
+              <div className="row">
+                <div className={styles.IMG + " col-12"}>
+                  <img src={imgsrc} alt="Logo"/>
+                </div>
+                <div className="col-12">
                   {this.props.name}
                 </div>
-                <div className={styles.TeamAbb}>
-                  {this.props.abb}
-                </div>
+              </div>
+
+
+
             </NavLink>
           </div>
     )

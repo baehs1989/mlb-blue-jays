@@ -8,3 +8,13 @@
 {
   vertical-align: middle !important;
 }
+
+.Name{
+  text-align: left;
+}
+
+@media screen and (max-width:767px){
+  .Name {
+    text-align: center;
+  }
+}

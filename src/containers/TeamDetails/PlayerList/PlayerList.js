@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import styles from './PlayerList.module.css'
 
 class PlayerList extends Component {
-  componentDidMount(){
+  componentDidlMount(){
     console.log(this.props.players)
   }
 
@@ -13,15 +13,21 @@ class PlayerList extends Component {
         <tr key={player.person.id}>
           <th scope="row">{player.jerseyNumber}</th>
           <td>
-            <div className="row justify-content-center" style={{"alignItems":"center"}}>
-              <img className={styles.Image} src={`https://securea.mlb.com/mlb/images/players/head_shot/${player.person.id}.jpg`} alt="Player"/>
               <Link
                 to={{
                   pathname:'/player/' + player.person.id,
                 }}>
-                {player.person.fullName}
+                <div className="row justify-content-end" style={{"alignItems":"center"}}>
+                  <div className="col-12 col-md-3">
+                    <img className={styles.Image} src={`https://securea.mlb.com/mlb/images/players/head_shot/${player.person.id}.jpg`} alt="Player"/>
+                  </div>
+                  <div className={styles.Name + " col-12 col-md-8"}>
+                    {player.person.fullName}
+                  </div>
+
+                </div>
+
               </Link>
-            </div>
           </td>
           <td>{player.person.batSide.code}/{player.person.pitchHand.code}</td>
           <td>{player.person.height}</td>
@@ -32,24 +38,28 @@ class PlayerList extends Component {
     })
 
     return (
-      <table className={styles.Table + " table col-10"}>
-        <thead>
-          <tr>
-            <th colSpan="6">{this.props.children}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">B/T</th>
-            <th scope="col">Ht</th>
-            <th scope="col">Wt</th>
-            <th scope="col">DOB</th>
-          </tr>
-          {players}
-        </tbody>
-      </table>
+      <div className="row col-12 justify-content-center">
+        <div className="col-12 col-l-8">
+          <table className={styles.Table + " table"} style={{"display":(this.props.shown?"table":"none"), "width":"100%"}}>
+            <thead>
+              <tr>
+                <th colSpan="6">{this.props.children}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">B/T</th>
+                <th scope="col">Ht</th>
+                <th scope="col">Wt</th>
+                <th scope="col">DOB</th>
+              </tr>
+              {players}
+            </tbody>
+          </table>
+        </div>
+      </div>
     )
   }
 }

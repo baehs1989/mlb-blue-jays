@@ -1,215 +1,13 @@
 import React, { Component} from "react";
 import styles from './Team.module.css'
 import Division from './Division/Division'
+import axios from '../../base-axios';
 
 class Team extends Component {
   state = {
     //American League
     103 : {
-      201 : [
-        {
-          "id" : 141,
-          "name" : "Toronto Blue Jays",
-          "link" : "/api/v1/teams/141",
-          "venue" : {
-            "id" : 14,
-            "name" : "Rogers Centre",
-            "link" : "/api/v1/venues/14"
-          },
-          "teamCode" : "tor",
-          "fileCode" : "tor",
-          "abbreviation" : "TOR",
-          "teamName" : "Blue Jays",
-          "locationName" : "Toronto",
-          "firstYearOfPlay" : "1977",
-          "league" : {
-            "id" : 103,
-            "name" : "American League",
-            "link" : "/api/v1/league/103"
-          },
-          "division" : {
-            "id" : 201,
-            "name" : "American League East",
-            "link" : "/api/v1/divisions/201"
-          },
-          "sport" : {
-            "id" : 1,
-            "link" : "/api/v1/sports/1",
-            "name" : "Major League Baseball"
-          },
-          "shortName" : "Toronto",
-          "springLeague" : {
-            "id" : 115,
-            "name" : "Grapefruit League",
-            "link" : "/api/v1/league/115",
-            "abbreviation" : "GL"
-          },
-          "allStarStatus" : "N",
-          "active" : true
-        },
-        {
-          "id" : 147,
-          "name" : "New York Yankees",
-          "link" : "/api/v1/teams/147",
-          "venue" : {
-            "id" : 3313,
-            "name" : "Yankee Stadium",
-            "link" : "/api/v1/venues/3313"
-          },
-          "teamCode" : "nya",
-          "fileCode" : "nyy",
-          "abbreviation" : "NYY",
-          "teamName" : "Yankees",
-          "locationName" : "Bronx",
-          "firstYearOfPlay" : "1903",
-          "league" : {
-            "id" : 103,
-            "name" : "American League",
-            "link" : "/api/v1/league/103"
-          },
-          "division" : {
-            "id" : 201,
-            "name" : "American League East",
-            "link" : "/api/v1/divisions/201"
-          },
-          "sport" : {
-            "id" : 1,
-            "link" : "/api/v1/sports/1",
-            "name" : "Major League Baseball"
-          },
-          "shortName" : "NY Yankees",
-          "springLeague" : {
-            "id" : 115,
-            "name" : "Grapefruit League",
-            "link" : "/api/v1/league/115",
-            "abbreviation" : "GL"
-          },
-          "allStarStatus" : "N",
-          "active" : true
-      },
-      {
-          "id" : 110,
-          "name" : "Baltimore Orioles",
-          "link" : "/api/v1/teams/110",
-          "venue" : {
-            "id" : 2,
-            "name" : "Oriole Park at Camden Yards",
-            "link" : "/api/v1/venues/2"
-          },
-          "teamCode" : "bal",
-          "fileCode" : "bal",
-          "abbreviation" : "BAL",
-          "teamName" : "Orioles",
-          "locationName" : "Baltimore",
-          "firstYearOfPlay" : "1901",
-          "league" : {
-            "id" : 103,
-            "name" : "American League",
-            "link" : "/api/v1/league/103"
-          },
-          "division" : {
-            "id" : 201,
-            "name" : "American League East",
-            "link" : "/api/v1/divisions/201"
-          },
-          "sport" : {
-            "id" : 1,
-            "link" : "/api/v1/sports/1",
-            "name" : "Major League Baseball"
-          },
-          "shortName" : "Baltimore",
-          "springLeague" : {
-            "id" : 115,
-            "name" : "Grapefruit League",
-            "link" : "/api/v1/league/115",
-            "abbreviation" : "GL"
-          },
-          "allStarStatus" : "N",
-          "active" : true
-        },
-        {
-            "id" : 111,
-            "name" : "Boston Red Sox",
-            "link" : "/api/v1/teams/111",
-            "venue" : {
-              "id" : 3,
-              "name" : "Fenway Park",
-              "link" : "/api/v1/venues/3"
-            },
-            "teamCode" : "bos",
-            "fileCode" : "bos",
-            "abbreviation" : "BOS",
-            "teamName" : "Red Sox",
-            "locationName" : "Boston",
-            "firstYearOfPlay" : "1901",
-            "league" : {
-              "id" : 103,
-              "name" : "American League",
-              "link" : "/api/v1/league/103"
-            },
-            "division" : {
-              "id" : 201,
-              "name" : "American League East",
-              "link" : "/api/v1/divisions/201"
-            },
-            "sport" : {
-              "id" : 1,
-              "link" : "/api/v1/sports/1",
-              "name" : "Major League Baseball"
-            },
-            "shortName" : "Boston",
-            "springLeague" : {
-              "id" : 115,
-              "name" : "Grapefruit League",
-              "link" : "/api/v1/league/115",
-              "abbreviation" : "GL"
-            },
-            "allStarStatus" : "N",
-            "active" : true
-          },
-          {
-              "id" : 139,
-              "name" : "Tampa Bay Rays",
-              "link" : "/api/v1/teams/139",
-              "venue" : {
-                "id" : 12,
-                "name" : "Tropicana Field",
-                "link" : "/api/v1/venues/12"
-              },
-              "teamCode" : "tba",
-              "fileCode" : "tb",
-              "abbreviation" : "TB",
-              "teamName" : "Rays",
-              "locationName" : "Tampa Bay",
-              "firstYearOfPlay" : "1998",
-              "league" : {
-                "id" : 103,
-                "name" : "American League",
-                "link" : "/api/v1/league/103"
-              },
-              "division" : {
-                "id" : 201,
-                "name" : "American League East",
-                "link" : "/api/v1/divisions/201"
-              },
-              "sport" : {
-                "id" : 1,
-                "link" : "/api/v1/sports/1",
-                "name" : "Major League Baseball"
-              },
-              "shortName" : "Tampa Bay",
-              "springLeague" : {
-                "id" : 115,
-                "name" : "Grapefruit League",
-                "link" : "/api/v1/league/115",
-                "abbreviation" : "GL"
-              },
-              "allStarStatus" : "N",
-              "active" : true
-            }
-
-
-      ], //Amaerican League East
+      201 : [], //Amaerican League East
       202 : [], //American League Central
       200 : [], //American League West
     },
@@ -218,30 +16,65 @@ class Team extends Component {
       204 : [], //National League East
       205 : [], //National League Central
       203 : [], //National League West
+    },
+    buttons: {
+      albutton:true,
+      nlbutton:false
     }
-
   }
 
   componentDidMount(){
     console.log("Team")
     this.props.history.replace('/')
+
+    axios.get('/api/v1/teams?sportId=1')
+        .then(response => {
+            let new_state = {...this.state}
+            for (let team of response.data.teams){
+              new_state[team.league.id][team.division.id].push(team)
+            }
+            this.setState(new_state)
+        })
+        .catch(error => {
+
+        });
   }
 
+  buttonClickHandler(button){
+    let updated_buttons = {
+      albutton: false,
+      nlbutton: false
+    }
+    updated_buttons[button] = true
+    this.setState({buttons:updated_buttons})
+  }
+
+
   render(){
-
     return (
-      <React.Fragment>
-        <div className={styles.Leagues + " row justify-content-center"}>
-          <div className={styles.Clicked + " league col-6 col-md-5"}>Amaerican League</div>
-          <div className="league col-6 col-md-5">National League</div>
+      <div>
+        <div className={"row justify-content-center " + styles.Leagues}>
+            <div className={"col-5 col-md-5 " + (this.state.buttons.albutton ? styles.Clicked : "")} onClick={() => this.buttonClickHandler("albutton")}>Amaerican League</div>
+            <div className={"col-5 col-md-5 " + (this.state.buttons.nlbutton ? styles.Clicked : "")} onClick={() => this.buttonClickHandler("nlbutton")}>National League</div>
         </div>
 
-        <div className={styles.Divisions}>
-          <Division league="AL" division_name="Amaerican League East" teams={this.state[103][201]}/>
-          <Division league="AL" division_name="Amaerican League East" teams={this.state[103][201]}/>
+        <div className="row justify-content-center">
+          <div className="col-12 mb-5">
+            <div style={{"display":this.state.buttons.albutton ? "block" : "none"}}>
+              <Division league="AL" division_name="Amaerican League East" teams={this.state[103][201]}/>
+              <Division league="AL" division_name="American League Central" teams={this.state[103][202]}/>
+              <Division league="AL" division_name="American League West" teams={this.state[103][200]}/>
+            </div>
+
+            <div style={{"display":this.state.buttons.nlbutton ? "block" : "none"}}>
+              <Division league="NL" division_name="National League East" teams={this.state[104][204]}/>
+              <Division league="NL" division_name="National League Central" teams={this.state[104][205]}/>
+              <Division league="NL" division_name="National League West" teams={this.state[104][203]}/>
+            </div>
+          </div>
         </div>
 
-      </React.Fragment>
+      </div>
 
     )
   }
