@@ -62,7 +62,7 @@
 
 @media screen and (max-width: 790px){
   .Logo {
-    display: none;
+    /* display: none; */
   }
 
   .Menu{
@@ -123,7 +123,7 @@
     top: 0
   }
 
-  .Nav{
+  /* .Nav{
     max-width: 190px;
     width: 50vw;
     height: 100vh;
@@ -133,7 +133,7 @@
     z-index: 998;
     line-height: 1;
     font-size: 1.5rem;
-  }
+  } */
 
   .MenuOpen .Nav{
     transform: translateX(0);

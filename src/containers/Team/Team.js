@@ -2,6 +2,7 @@ import React, { Component} from "react";
 import styles from './Team.module.css'
 import Division from './Division/Division'
 import axios from '../../base-axios';
+import withErrorHandler from '../../hoc/withErrorHandler';
 
 class Team extends Component {
   state = {
@@ -24,7 +25,6 @@ class Team extends Component {
   }
 
   componentDidMount(){
-    console.log("Team")
     this.props.history.replace('/')
 
     axios.get('/api/v1/teams?sportId=1')
@@ -80,4 +80,4 @@ class Team extends Component {
   }
 }
 
-export default Team;
+export default withErrorHandler(Team,axios);

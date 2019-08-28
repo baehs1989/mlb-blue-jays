@@ -1,0 +1,12 @@
+.Icon{
+  cursor:pointer;
+  box-sizing: border-box;
+  font-size:60px;
+  color:#2b68aabd;
+  border-radius: 4px;
+  padding:0.5rem;
+  position: fixed;
+  bottom: 2vh;
+  right: 2vw;
+  z-index: 99;
+}

@@ -3,10 +3,6 @@ import {Link} from 'react-router-dom';
 import styles from './PlayerList.module.css'
 
 class PlayerList extends Component {
-  componentDidlMount(){
-    console.log(this.props.players)
-  }
-
   render(){
     let players = this.props.players.map((player) => {
       return (
@@ -37,30 +33,34 @@ class PlayerList extends Component {
       )
     })
 
-    return (
-      <div className="row col-12 justify-content-center">
-        <div className="col-12 col-l-8">
-          <table className={styles.Table + " table"} style={{"display":(this.props.shown?"table":"none"), "width":"100%"}}>
-            <thead>
-              <tr>
-                <th colSpan="6">{this.props.children}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">B/T</th>
-                <th scope="col">Ht</th>
-                <th scope="col">Wt</th>
-                <th scope="col">DOB</th>
-              </tr>
-              {players}
-            </tbody>
-          </table>
+    if (this.props.players.length > 0){
+      return (
+
+        <div className="row col-12 col-l-8 justify-content-center">
+            <table className={styles.Table + " table"} style={{"display":(this.props.shown?"table":"none"), "width":"100%"}}>
+              <thead>
+                <tr>
+                  <th colSpan="6">{this.props.children}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">B/T</th>
+                  <th scope="col">Ht</th>
+                  <th scope="col">Wt</th>
+                  <th scope="col">DOB</th>
+                </tr>
+                {players}
+              </tbody>
+            </table>
         </div>
-      </div>
-    )
+      )
+    }
+
+    return null
+
   }
 }
 

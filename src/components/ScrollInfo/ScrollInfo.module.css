@@ -1,0 +1,40 @@
+.Wrapper{
+  height:2rem;
+  position:absolute;
+  z-index: 100;
+  top:35%;
+  left:50%;
+  display:none;
+  opacity:0;
+  -webkit-animation-name: left; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  animation-name: left;
+  animation-duration: 3s;
+}
+
+.SInfo{
+  font-size:2.5rem;
+}
+
+@media screen and (max-width:1390px){
+  .Wrapper{
+    display:block;
+  }
+}
+
+@-webkit-keyframes left {
+  0%   {opacity:1; left:45vw; top:25%;}
+  25%  {opacity:1; left:50vw; top:25%;}
+  50%  {opacity:1; left:40vw; top:25%;}
+  75%  {opacity:1; left:50vw; top:25%;}
+  100% {left:40vw; top:20%;}
+}
+
+/* Standard syntax */
+@keyframes left {
+  0%   {opacity:1; left:45vw; top:25%;}
+  25%  {opacity:1; left:50vw; top:25%;}
+  50%  {opacity:1; left:40vw; top:25%;}
+  75%  {opacity:1; left:50vw; top:25%;}
+  100% {left:40vw; top:25%;}
+}

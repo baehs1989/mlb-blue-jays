@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import styles from './PlayerDetails.module.css';
 import axios from '../../base-axios';
+import ScrollInfo from '../../components/ScrollInfo/ScrollInfo'
+import withErrorHandler from '../../hoc/withErrorHandler';
 
 class PlayerDetails extends Component {
   state = {
@@ -13,7 +15,6 @@ class PlayerDetails extends Component {
   }
 
   componentDidMount(){
-
     axios.get(`/api/v1/people/${this.props.match.params.id}?hydrate=stats(group=[hitting,pitching],type=[yearByYear])`)
         .then(response => {
           this.setState({"player" : response.data.people[0]})
@@ -53,7 +54,7 @@ class PlayerDetails extends Component {
     }
 
     let pitching_tr =[]
-    let hitting_tr = []
+    let hitting_tr = []
 
     if (this.state.player !== null){
       for (let data_set of this.state.player.stats){
@@ -98,7 +99,11 @@ class PlayerDetails extends Component {
       hitting_tr = player_data["hitting"].map((data,index) => {
         return (
           <tr key={data.season+index}>
-            <th className={styles.Pinned}><span>{data.season}</span></th>
+            <th className={styles.Pinned}>
+              <div>
+                <div>{data.season}</div>
+              </div>
+            </th>
             <td><span>{data.team.name}</span></td>
             <td><span>{data.league.name}</span></td>
             <td><span>{data.stat.gamesPlayed}</span></td>
@@ -214,11 +219,12 @@ class PlayerDetails extends Component {
 
                 <div className="col-12">
                   <div className={styles.Wrapper} style={{"display":(this.state.buttons.pbutton?"table":"none")}}>
+                    <ScrollInfo/>
                     <div className={styles.Scroller}>
                       <table className="table">
-                        <thead>
+                        <thead className={styles.theadColor}>
                           <tr>
-                            <th className={styles.Pinned}><span>Season</span></th>
+                            <th className={styles.Pinned + " " + styles.theadColor}><span>Season</span></th>
                             <th><span>Team</span></th>
                             <th><span>LG</span></th>
                             <th><span>W</span></th>
@@ -257,11 +263,12 @@ class PlayerDetails extends Component {
 
                 <div className="col-12">
                   <div className={styles.Wrapper} style={{"display":(this.state.buttons.bbutton?"table":"none")}}>
+                    <ScrollInfo/>
                     <div className={styles.Scroller}>
                       <table className="table">
-                        <thead>
+                        <thead className={styles.theadColor}>
                           <tr>
-                            <th className={styles.Pinned}><span>Season</span></th>
+                            <th className={styles.Pinned + " " + styles.theadColor}><span>Season</span></th>
                             <th><span>Team</span></th>
                             <th><span>LG</span></th>
                             <th><span>G</span></th>
@@ -296,9 +303,8 @@ class PlayerDetails extends Component {
 
               </div>
             </div>
-
-
           </div>
+
           </React.Fragment>
         ):
         null
@@ -306,4 +312,4 @@ class PlayerDetails extends Component {
   }
 }
 
-export default PlayerDetails;
+export default withErrorHandler(PlayerDetails,axios);

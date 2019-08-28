@@ -18,3 +18,9 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 390px){
+  .Table {
+    font-size: 0.8em;
+  }
+}

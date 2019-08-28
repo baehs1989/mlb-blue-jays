@@ -17,10 +17,6 @@
   font-size:0.9rem;
 }
 
-.BIO #current_stat{
-  font-size:0.8rem;
-}
-
 .STAT table{
   line-height:normal;
 }
@@ -49,12 +45,10 @@
   box-sizing: border-box;
 }
 
-.STAT th.Pinned{
 
-}
-
-.STAT tr:nth-child(odd) {
-  /* background-color: #ccc; */
+.theadColor{
+  background-color: #004784 !important;
+  color:white;
 }
 
 .STAT thead th{

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Navigation from '../../components/Navigation/Navigation'
 import styles from './Layout.module.css'
+import ScrollUpButton from '../../components/ScrollUpButton/ScrollUpButton'
 
 class Layout extends Component {
     render (){
@@ -16,6 +17,7 @@ class Layout extends Component {
                 </main>
               </div>
             </div>
+            <ScrollUpButton/>
           </React.Fragment>
         )
     }

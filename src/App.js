@@ -7,12 +7,21 @@ import TeamDetails from './containers/TeamDetails/TeamDetails'
 import PlayerDetails from './containers/PlayerDetails/PlayerDetails'
 import {Route, Switch} from 'react-router-dom';
 
+import Spinner from './components/Spinner/Spinner'
+
 
 function App() {
+  let errorPage = (
+    <div class="alert alert-danger" style={{"padding":"1rem","fontSize":"1.2rem"}}>
+      Sorry for the inconvenience. <br/>Our site is temporarily unavailable.<br/>Please try again later.
+    </div>
+  )
+
   return (
     <div className="App">
       <Layout>
         <Switch>
+          <Route path="/error" exact render={() => errorPage}/>
           <Route path="/team/:id([0-9]+)" exact component={TeamDetails}/>
           <Route path="/player/:id([0-9]+)" exact component={PlayerDetails}/>
           <Route path="/" component={Team}/>

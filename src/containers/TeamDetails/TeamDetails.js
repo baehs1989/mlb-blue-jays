@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PlayerList from './PlayerList/PlayerList';
 import styles from './TeamDetails.module.css'
 import axios from '../../base-axios';
+import withErrorHandler from '../../hoc/withErrorHandler'
 
 class TeamDetails extends Component {
   state = {
@@ -100,4 +101,4 @@ class TeamDetails extends Component {
   }
 }
 
-export default TeamDetails;
+export default withErrorHandler(TeamDetails,axios)
