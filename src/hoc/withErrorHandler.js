@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
+import Spinner from '../components/Spinner/Spinner'
 
 const withErrorHandler = (WrappedComponent, axios) => {
     return class extends Component {
         constructor(props){
           super(props)
           this.state ={
-            error:null
+            error:null,
           }
 
           this.checkError()
@@ -19,7 +20,12 @@ const withErrorHandler = (WrappedComponent, axios) => {
                 return req;
             });
 
-            this.resInterceptor = axios.interceptors.response.use(res => res, error => {
+            this.resInterceptor = axios.interceptors.response.use(res => {
+                return res
+              }
+              ,
+
+              error => {
                 console.log(this.props)
                 this.props.history.replace('/error')
                 this.setState({error: error})
@@ -38,7 +44,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
         render () {
             return (
               <React.Fragment>
-                <WrappedComponent {...this.props} />
+                <WrappedComponent {...this.props}/>
               </React.Fragment>
             )
         }

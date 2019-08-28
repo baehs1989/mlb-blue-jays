@@ -7,12 +7,10 @@ import TeamDetails from './containers/TeamDetails/TeamDetails'
 import PlayerDetails from './containers/PlayerDetails/PlayerDetails'
 import {Route, Switch} from 'react-router-dom';
 
-import Spinner from './components/Spinner/Spinner'
-
 
 function App() {
   let errorPage = (
-    <div class="alert alert-danger" style={{"padding":"1rem","fontSize":"1.2rem"}}>
+    <div className="alert alert-danger" style={{"padding":"1rem","fontSize":"1.2rem"}}>
       Sorry for the inconvenience. <br/>Our site is temporarily unavailable.<br/>Please try again later.
     </div>
   )

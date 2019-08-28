@@ -3,6 +3,7 @@ import styles from './PlayerDetails.module.css';
 import axios from '../../base-axios';
 import ScrollInfo from '../../components/ScrollInfo/ScrollInfo'
 import withErrorHandler from '../../hoc/withErrorHandler';
+import Spinner from '../../components/Spinner/Spinner'
 
 class PlayerDetails extends Component {
   state = {
@@ -10,14 +11,14 @@ class PlayerDetails extends Component {
     buttons: {
       pbutton:true,
       bbutton:false
-    }
-
+    },
+    loading:true
   }
 
   componentDidMount(){
     axios.get(`/api/v1/people/${this.props.match.params.id}?hydrate=stats(group=[hitting,pitching],type=[yearByYear])`)
         .then(response => {
-          this.setState({"player" : response.data.people[0]})
+          this.setState({"player" : response.data.people[0], loading:false})
 
           if (this.state.player.primaryPosition.type !== "Pitcher"){
             let updated_buttons = {
@@ -135,176 +136,179 @@ class PlayerDetails extends Component {
           this.state.player !== null ?
           (
           <React.Fragment>
-          <div className="row justify-content-center">
-            <div className={styles.BIO + " card m-2"}>
-              <div className="row no-gutters">
-                <div className="col-6">
-                  <img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.state.player.id}.jpg`} className="card-img-top" alt="Player"/>
-                </div>
-                <div className="col-6">
-                    <div className="card-body" style={{"display" : "grid", "paddingLeft": "0.5rem", "textAlign": "left", "height": "100%"}}>
-                      <span>#{this.state.player.primaryNumber}</span>
-                      <span>{this.state.player.fullName}</span>
-                      <span style={{"fontSize" : "0.9rem", "fontWeight": "400"}}>{this.state.player.primaryPosition.name}</span>
-                      <table>
-                      <tbody>
-                      <tr>
-                        <td>
-                          B/T:
-                        </td>
-                        <td>
-                          {this.state.player.batSide.code}/{this.state.player.pitchHand.code}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Born:
-                        </td>
-                        <td>
-                          {this.state.player.birthDate} ({this.state.player.currentAge})
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Height:
-                        </td>
-                        <td>
-                          {this.state.player.height}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Weight:
-                        </td>
-                        <td>
-                          {this.state.player.weight}lbs
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Draft:
-                        </td>
-                        <td>
-                          {this.state.player.draftYear}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Debut:
-                        </td>
-                        <td>
-                          {this.state.player.mlbDebutDate}
-                        </td>
-                      </tr>
-                      </tbody>
-                      </table>
-                    </div>
-                </div>
-
-              </div>
-
-
-            </div>
-
-
-
-            <div className={styles.STAT}>
-
-              <div className={styles.Buttons + " row justify-content-center"} onClick={(e) => this.buttonClickHandler(e)}>
-                <div className={"col-3 " + (this.state.buttons.pbutton?styles.Clicked:"")} id="pbutton">Ptiching</div>
-                <div className={"col-3 " + (this.state.buttons.bbutton?styles.Clicked:"")} id="bbutton">Batting</div>
-              </div>
-
+            {this.state.loading?
+              <Spinner/>
+            :
               <div className="row justify-content-center">
-
-                <div className="col-12">
-                  <div className={styles.Wrapper} style={{"display":(this.state.buttons.pbutton?"table":"none")}}>
-                    <ScrollInfo/>
-                    <div className={styles.Scroller}>
-                      <table className="table">
-                        <thead className={styles.theadColor}>
-                          <tr>
-                            <th className={styles.Pinned + " " + styles.theadColor}><span>Season</span></th>
-                            <th><span>Team</span></th>
-                            <th><span>LG</span></th>
-                            <th><span>W</span></th>
-                            <th><span>L</span></th>
-                            <th><span>ERA</span></th>
-                            <th><span>G</span></th>
-                            <th><span>GS</span></th>
-                            <th><span>CG</span></th>
-                            <th><span>SHO</span></th>
-                            <th><span>HLD</span></th>
-                            <th><span>SV</span></th>
-                            <th><span>SVO</span></th>
-                            <th><span>IP</span></th>
-                            <th><span>H</span></th>
-                            <th><span>R</span></th>
-                            <th><span>ER</span></th>
-                            <th><span>HR</span></th>
-                            <th><span>NP</span></th>
-                            <th><span>HB</span></th>
-                            <th><span>BB</span></th>
-                            <th><span>IBB</span></th>
-                            <th><span>SO</span></th>
-                            <th><span>AVG</span></th>
-                            <th><span>WHIP</span></th>
-                            <th><span>GO/AO</span></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {pitching_tr}
-                        </tbody>
-                      </table>
+                <div className={styles.BIO + " card m-2"}>
+                  <div className="row no-gutters">
+                    <div className="col-6">
+                      <img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.state.player.id}.jpg`} className="card-img-top" alt="Player"/>
                     </div>
+                    <div className="col-6">
+                        <div className="card-body" style={{"display" : "grid", "paddingLeft": "0.5rem", "textAlign": "left", "height": "100%"}}>
+                          <span>#{this.state.player.primaryNumber}</span>
+                          <span>{this.state.player.fullName}</span>
+                          <span style={{"fontSize" : "0.9rem", "fontWeight": "400"}}>{this.state.player.primaryPosition.name}</span>
+                          <table>
+                          <tbody>
+                          <tr>
+                            <td>
+                              B/T:
+                            </td>
+                            <td>
+                              {this.state.player.batSide.code}/{this.state.player.pitchHand.code}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Born:
+                            </td>
+                            <td>
+                              {this.state.player.birthDate} ({this.state.player.currentAge})
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Height:
+                            </td>
+                            <td>
+                              {this.state.player.height}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Weight:
+                            </td>
+                            <td>
+                              {this.state.player.weight}lbs
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Draft:
+                            </td>
+                            <td>
+                              {this.state.player.draftYear}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Debut:
+                            </td>
+                            <td>
+                              {this.state.player.mlbDebutDate}
+                            </td>
+                          </tr>
+                          </tbody>
+                          </table>
+                        </div>
+                    </div>
+
                   </div>
+
+
                 </div>
 
 
-                <div className="col-12">
-                  <div className={styles.Wrapper} style={{"display":(this.state.buttons.bbutton?"table":"none")}}>
-                    <ScrollInfo/>
-                    <div className={styles.Scroller}>
-                      <table className="table">
-                        <thead className={styles.theadColor}>
-                          <tr>
-                            <th className={styles.Pinned + " " + styles.theadColor}><span>Season</span></th>
-                            <th><span>Team</span></th>
-                            <th><span>LG</span></th>
-                            <th><span>G</span></th>
-                            <th><span>AB</span></th>
-                            <th><span>R</span></th>
-                            <th><span>H</span></th>
-                            <th><span>TB</span></th>
-                            <th><span>2B</span></th>
-                            <th><span>3B</span></th>
-                            <th><span>HR</span></th>
-                            <th><span>RBI</span></th>
-                            <th><span>BB</span></th>
-                            <th><span>IBB</span></th>
-                            <th><span>SO</span></th>
-                            <th><span>SB</span></th>
-                            <th><span>CS</span></th>
-                            <th><span>AVG</span></th>
-                            <th><span>OBP</span></th>
-                            <th><span>SLG</span></th>
-                            <th><span>OPS</span></th>
-                            <th><span>GO/AO</span></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {hitting_tr}
-                        </tbody>
-                      </table>
+
+                <div className={styles.STAT}>
+
+                  <div className={styles.Buttons + " row justify-content-center"} onClick={(e) => this.buttonClickHandler(e)}>
+                    <div className={"col-3 " + (this.state.buttons.pbutton?styles.Clicked:"")} id="pbutton">Ptiching</div>
+                    <div className={"col-3 " + (this.state.buttons.bbutton?styles.Clicked:"")} id="bbutton">Batting</div>
+                  </div>
+
+                  <div className="row justify-content-center">
+
+                    <div className="col-12">
+                      <div className={styles.Wrapper} style={{"display":(this.state.buttons.pbutton?"table":"none")}}>
+                        <ScrollInfo/>
+                        <div className={styles.Scroller}>
+                          <table className="table">
+                            <thead className={styles.theadColor}>
+                              <tr>
+                                <th className={styles.Pinned + " " + styles.theadColor}><span>Season</span></th>
+                                <th><span>Team</span></th>
+                                <th><span>LG</span></th>
+                                <th><span>W</span></th>
+                                <th><span>L</span></th>
+                                <th><span>ERA</span></th>
+                                <th><span>G</span></th>
+                                <th><span>GS</span></th>
+                                <th><span>CG</span></th>
+                                <th><span>SHO</span></th>
+                                <th><span>HLD</span></th>
+                                <th><span>SV</span></th>
+                                <th><span>SVO</span></th>
+                                <th><span>IP</span></th>
+                                <th><span>H</span></th>
+                                <th><span>R</span></th>
+                                <th><span>ER</span></th>
+                                <th><span>HR</span></th>
+                                <th><span>NP</span></th>
+                                <th><span>HB</span></th>
+                                <th><span>BB</span></th>
+                                <th><span>IBB</span></th>
+                                <th><span>SO</span></th>
+                                <th><span>AVG</span></th>
+                                <th><span>WHIP</span></th>
+                                <th><span>GO/AO</span></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {pitching_tr}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </div>
+
+
+                    <div className="col-12">
+                      <div className={styles.Wrapper} style={{"display":(this.state.buttons.bbutton?"table":"none")}}>
+                        <ScrollInfo/>
+                        <div className={styles.Scroller}>
+                          <table className="table">
+                            <thead className={styles.theadColor}>
+                              <tr>
+                                <th className={styles.Pinned + " " + styles.theadColor}><span>Season</span></th>
+                                <th><span>Team</span></th>
+                                <th><span>LG</span></th>
+                                <th><span>G</span></th>
+                                <th><span>AB</span></th>
+                                <th><span>R</span></th>
+                                <th><span>H</span></th>
+                                <th><span>TB</span></th>
+                                <th><span>2B</span></th>
+                                <th><span>3B</span></th>
+                                <th><span>HR</span></th>
+                                <th><span>RBI</span></th>
+                                <th><span>BB</span></th>
+                                <th><span>IBB</span></th>
+                                <th><span>SO</span></th>
+                                <th><span>SB</span></th>
+                                <th><span>CS</span></th>
+                                <th><span>AVG</span></th>
+                                <th><span>OBP</span></th>
+                                <th><span>SLG</span></th>
+                                <th><span>OPS</span></th>
+                                <th><span>GO/AO</span></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {hitting_tr}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+
                   </div>
                 </div>
-
-
               </div>
-            </div>
-          </div>
-
+            }
           </React.Fragment>
         ):
         null
