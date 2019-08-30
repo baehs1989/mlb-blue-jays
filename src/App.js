@@ -20,8 +20,8 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/error" exact render={() => errorPage}/>
-          <Route path="/team/:id([0-9]+)" exact component={TeamDetails}/>
-          <Route path="/player/:id([0-9]+)" exact component={PlayerDetails}/>
+          <Route path="/team/:id([0-9]+)" component={TeamDetails}/>
+          <Route path="/player/:id([0-9]+)" component={PlayerDetails}/>
           <Route path="/" component={Team}/>
         </Switch>
       </Layout>

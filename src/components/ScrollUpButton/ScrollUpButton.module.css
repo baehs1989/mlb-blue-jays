@@ -1,4 +1,5 @@
 .Icon{
+  display:none;
   cursor:pointer;
   box-sizing: border-box;
   font-size:60px;

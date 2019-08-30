@@ -1,0 +1,18 @@
+.sticky-table{
+  width:100%;
+  max-height:300px;
+  font-size:0.9rem;
+}
+
+.sticky-table .header div{
+  background-color: #004784 !important;
+  color:white;
+}
+
+.sticky-table .sticky-table-table{
+  margin:auto;
+}
+
+.pinned {
+  font-weight:bolder;
+}

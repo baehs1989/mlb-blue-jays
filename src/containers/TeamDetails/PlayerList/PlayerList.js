@@ -12,6 +12,7 @@ class PlayerList extends Component {
               <Link
                 to={{
                   pathname:'/player/' + player.person.id,
+                  button: this.props.button
                 }}>
                 <div className="row justify-content-end" style={{"alignItems":"center"}}>
                   <div className="col-12 col-md-3">

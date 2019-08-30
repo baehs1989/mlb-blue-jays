@@ -4,10 +4,6 @@ import TeamLogo from '../TeamLogo/TeamLogo'
 
 class Division extends Component {
 
-  componentDidMount(){
-    console.log("Division")
-  }
-
   render(){
 
     let teamlogos = this.props.teams.map(team => {
@@ -22,10 +18,10 @@ class Division extends Component {
 
     return (
       <div className={this.props.league + " " + styles.Division}>
-        <div className={styles.DivisionTitle}>
-          <span>
-            {this.props.division_name}
-          </span>
+        <div className="row justify-content-center">
+          <div className={styles.DivisionTitle}>
+              {this.props.division_name}
+          </div>
         </div>
 
         <div className="row justify-content-center">

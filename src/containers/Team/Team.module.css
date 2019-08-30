@@ -2,6 +2,11 @@
   font-size: 1.5rem;
 }
 
+@media screen and (max-width:720px){
+  .Leagues{
+    font-size: 1.0rem;
+  }
+}
 
 .Leagues div{
   box-sizing: border-box;

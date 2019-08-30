@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router';
-import Spinner from '../components/Spinner/Spinner'
 
 const withErrorHandler = (WrappedComponent, axios) => {
     return class extends Component {

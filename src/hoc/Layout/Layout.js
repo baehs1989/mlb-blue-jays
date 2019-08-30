@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Navigation from '../../components/Navigation/Navigation'
-import styles from './Layout.module.css'
 import ScrollUpButton from '../../components/ScrollUpButton/ScrollUpButton'
 
 class Layout extends Component {
@@ -8,7 +7,7 @@ class Layout extends Component {
         return (
           <React.Fragment>
             <Navigation/>
-            <div className={styles.Main + " container-fluid"}>
+            <div className={"container-fluid"}>
               <div className="row justify-content-center">
                 <main role="main" className="col-12 col-md-9">
                   <div className="row justify-content-center">

@@ -3,7 +3,14 @@
 }
 
 .Buttons{
-  font-size: 0.8rem;
+  font-size: 1rem;
+}
+
+@media screen and (max-width:576px){
+  .Buttons{
+    font-size: 0.8rem;
+  }
+
 }
 
 
