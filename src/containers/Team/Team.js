@@ -23,6 +23,8 @@ class Team extends Component {
           nl:false
       }
       buttons[this.paths[1]] = true
+      console.log(this.props.match)
+      this.props.history.replace('/'+this.paths[1])
     }else{
       this.props.history.replace('/')
     }
