@@ -9,6 +9,10 @@
   color:white;
 }
 
+.sticky-table .tbody:nth-child(odd) .sticky-table-cell{
+  background-color: #d8d8d8;
+}
+
 .sticky-table .sticky-table-table{
   margin:auto;
 }

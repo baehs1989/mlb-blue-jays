@@ -87,7 +87,7 @@ class PlayerDetails extends Component {
 
       pitching_tr = player_data["pitching"].map((data,index) => {
         return (
-          <Row key={index+data.season}>
+          <Row key={index+data.season} className="tbody">
             <Cell className="pinned">{data.season}</Cell>
             <Cell>{data.team.name}</Cell>
             <Cell>{data.league.name}</Cell>
@@ -120,7 +120,7 @@ class PlayerDetails extends Component {
 
       hitting_tr = player_data["hitting"].map((data,index) => {
         return (
-          <Row key={index+data.season}>
+          <Row key={index+data.season} className="tbody">
             <Cell className="pinned">{data.season}</Cell>
             <Cell>{data.team.name}</Cell>
             <Cell>{data.league.name}</Cell>
