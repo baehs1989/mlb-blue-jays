@@ -21,18 +21,18 @@
 }
 
 @-webkit-keyframes left {
-  0%   {opacity:1; left:45%; top:15%;}
-  25%  {opacity:1; left:50%; top:15%;}
-  50%  {opacity:1; left:40%; top:15%;}
-  75%  {opacity:1; left:50%; top:15%;}
-  100% {left:40%; top:15%;}
+  0%   {opacity:1; left:45%; top:17%;}
+  25%  {opacity:1; left:50%; top:17%;}
+  50%  {opacity:1; left:40%; top:17%;}
+  75%  {opacity:1; left:50%; top:17%;}
+  100% {left:40%; top:17%;}
 }
 
 /* Standard syntax */
 @keyframes left {
-  0%   {opacity:1; left:45%; top:15%;}
-  25%  {opacity:1; left:50%; top:15%;}
-  50%  {opacity:1; left:40%; top:15%;}
-  75%  {opacity:1; left:50%; top:15%;}
-  100% {left:40%; top:15%;}
+  0%   {opacity:1; left:45%; top:17%;}
+  25%  {opacity:1; left:50%; top:17%;}
+  50%  {opacity:1; left:40%; top:17%;}
+  75%  {opacity:1; left:50%; top:17%;}
+  100% {left:40%; top:17%;}
 }
